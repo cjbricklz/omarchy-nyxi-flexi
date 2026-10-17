@@ -2,6 +2,8 @@
 
 ![The plugin popup open on the Omarchy bar](preview.png)
 
+![The popup with a controller connected in Switch Pro mode](preview-connected.png)
+
 ![With a controller connected in Switch Pro mode: channel light, battery level and mode in the console](preview-connected.png)
 
 An Omarchy bar widget for the NYXI Flexi controller. Click the gamepad icon to open a popup with:
