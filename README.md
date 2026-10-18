@@ -1,5 +1,7 @@
 # NYXI Flexi for Omarchy
 
+![The NYXI Flexi popup with no controller connected](preview.png)
+
 An Omarchy bar widget for the NYXI Flexi controller. Click the gamepad icon to open a popup with:
 
 - **Battery** at the top right: an icon drawn to the charge, with the level beside it. Linux only knows the charge if the controller reports it to the kernel, which depends on how it is connected (see Notes); otherwise it shows N/A. In XInput (Xbox) mode, which never reports one, the battery is hidden.
