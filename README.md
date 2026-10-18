@@ -58,12 +58,12 @@ python3 -I tests/reader_test.py
 
 ## License
 
-MIT. See [LICENSE](LICENSE). That covers the plugin code. The user manual text at the end of this file is NYXI's. The controller drawings are original.
+MIT. See [LICENSE](LICENSE). That covers the plugin code. The user manual at the end of this file and its images in `docs/manual/` are NYXI's. The controller drawings are original.
 
 <!-- manual:start -->
 ## NYXI Flexi user manual
 
-NYXI's complete user manual, copied from [https://nyxigame.com/pages/np05_manual](https://nyxigame.com/pages/np05_manual) so it is here offline. It is NYXI's content, not part of this plugin; refresh it with `python3 tools/manual-to-readme.py`.
+NYXI's complete user manual, copied from [https://nyxigame.com/pages/np05_manual](https://nyxigame.com/pages/np05_manual) so it is here offline, with its images in `docs/manual/images/`. It is NYXI's content, not part of this plugin; refresh it with `python3 tools/manual-to-readme.py`.
 
 #### Note：
 
@@ -74,6 +74,14 @@ Before the first use, connect the controller to your PC using the USB cable to c
 - **Key Layout Information**
 
 All ABXY button references in this guide are based on the PC layout. Please ensure the PC layout mode is selected.
+
+![Game controller nyxi flexi front](docs/manual/images/01-game-controller-nyxi-flexi-front.png)
+
+![Wireless game controller nyxi flexi back](docs/manual/images/02-wireless-game-controller-nyxi-flexi-back.png)
+
+![Game controller wireless nyxi flexi upper](docs/manual/images/03-game-controller-wireless-nyxi-flexi-upper.png)
+
+![Nyxi flexi wireless game controller channerl light](docs/manual/images/04-nyxi-flexi-wireless-game-controller-channerl-light.jpeg)
 
 ### USER GUIDE
 
@@ -91,17 +99,23 @@ To switch from **Switch Pro mode** to **Dinput mode**, press and hold the **BACK
 
 To return to **Xinput mode** from **Dinput mode**, press and hold the **BACK + START buttons** for **3 seconds** once more.
 
+![Connect to pc with receiver](docs/manual/images/05-connect-to-PC-with-receiver.jpeg)
+
 - **Wired Mode**
 
 Use a **USB-C cable** to connect the controller to your PC. Once connected, the controller is ready for use.
 
 To **switch modes,** press and hold the **BACK + START buttons**, following the **same logic** as when connecting via the receiver.
 
+![Connect to pc with wired](docs/manual/images/06-02-connect-to-pc-with-wired.jpeg)
+
 - **Bluetooth Mode**
 
 Press and hold the **A + HOME buttons** simultaneously to turn on the controller. The **Channel 2 LED** will start flashing.
 
 Search for ***Xbox Wireless Controller*** in the Bluetooth device list on your PC. Click **Connect** to complete the pairing process.
+
+![Connect to pc with bluetooth](docs/manual/images/07-03-connect-to-pc-with-bluetooth.jpeg)
 
 #### Switch
 
@@ -111,21 +125,31 @@ Press and hold the **B + HOME buttons** simultaneously to turn on the controller
 
 Search for the controller on your Switch and wait for it to pair automatically.
 
+![NYXI Flexi manual figure 8](docs/manual/images/08-lQDPKG0yclGpXavNAs3NCbGwViRaN0IUr2gH6f7WszbvAA-2481-717.jpeg)
+
 - **Wired Mode**
 
 To connect the controller directly to the Switch via a wired connection, you will need a hub.
+
+![Nyxi flexi connect to switch wired mode](docs/manual/images/09-05-nyxi-flexi-connect-to-switch-wired-mode.jpeg)
 
 #### Android
 
 Press and hold the **A + HOME buttons** simultaneously to turn on the controller. Search for ***Xbox Wireless Controller*** in the Bluetooth device list and click Connect to pair it with your phone.
 
+![Connect to android with bluetooth](docs/manual/images/10-06-connect-to-android-with-bluetooth.jpeg)
+
 #### iOS
 
 Press and hold the **A + HOME buttons** simultaneously to turn on the controller. Search for ***Xbox Wireless Controller*** in the Bluetooth device list and click Connect to pair it with your device.
 
+![Connect to android with bluetooth](docs/manual/images/10-06-connect-to-android-with-bluetooth.jpeg)
+
 #### Windows Handheld Device
 
 Press and hold the **A + HOME buttons** simultaneously to turn on the controller. Search for ***Xbox Wireless Controller*** and click Connect to pair it with your device.
+
+![Connect to android with bluetooth](docs/manual/images/10-06-connect-to-android-with-bluetooth.jpeg)
 
 #### Tesla
 
@@ -133,23 +157,33 @@ Press and hold the **A + HOME buttons** simultaneously to turn on the controller
 
 Press and hold the **B + HOME buttons** simultaneously to turn on the controller. Plug the receiver, keep pressing the button on the receiver and wait for the controller to automatically pair and connect.
 
+![Tesla receiver mode](docs/manual/images/11-07-tesla-receiver-mode.jpeg)
+
 - **Wired Mode**
 
 Simply connect the controller to the **Tesla** using a **USB cable**, and it will be ready to use.
+
+![Tesla wired mode](docs/manual/images/12-08-tesla-wired-mode.jpeg)
 
 - **Bluetooth Mode**
 
 Press and hold the A + HOME buttons simultaneously to turn on the controller. Search for Xbox Wireless Controller and click Connect to pair it with your Tesla.
 
+![Tesla bluetooth mode](docs/manual/images/13-08-tesla-bluetooth-mode.jpeg)
+
 #### Android TV
 
 Press and hold the **A + HOME buttons** simultaneously to turn on the controller. Search for ***Xbox Wireless Controller*** and click Connect to pair it with your TV.
+
+![Tesla bluetooth mode](docs/manual/images/13-08-tesla-bluetooth-mode.jpeg)
 
 ### NYXI Flexi | Introduction
 
 ### ABXY Key Swap Operation
 
 Take off the magnetic cover and gently remove the ABXY keycaps and swap their positions according to your preference. After swapping the keycaps, securely place the magnetic cover back in place to ensure the keycaps stay in place and avoid accidental detachment.
+
+![Abxy swap](docs/manual/images/14-010-abxy-swap.jpeg)
 
 **Note:**
 
@@ -160,6 +194,8 @@ Take off the magnetic cover and gently remove the ABXY keycaps and swap their po
 #### Left Joystick and D-pad Module Swap Operation
 
 Take off the magnetic cover, and gently pull the left joystick and D-pad module upwards from their slots. Rotate them at 180° and press them down firmly into their new positions. Once the modules are in place, securely attach the magnetic cover to complete the swap.
+
+![Hot swapping joystick and d pad](docs/manual/images/15-011-hot-swapping-joystick-and-d-pad.jpeg)
 
 Note:
 
@@ -176,6 +212,8 @@ Rainbow Cycle -- Rainbow Breathing -- Solid Red -- Red Breathing -- Solid Orange
 
 The default lighting is **Solid Blue** when the controller is powered on. If the lighting is adjusted, when the controller restarts, it will automatically save the last used lighting mode.
 
+![Rgb light setting](docs/manual/images/16-012-rgb-light-setting.jpeg)
+
 #### Programmable Button Function
 
 \*Supported buttons for programmable function: **ABXY, L1, L2, R1, R2, D-pad, L3, R3, and the left/right joysticks**.
@@ -186,17 +224,23 @@ Press and hold the **T button + the back button** you want to program. The contr
 
 Once the recording is complete, press the **T button** to save the programmed setting. The controller can store up to **21 different key combinations**.
 
+![Back button program](docs/manual/images/17-013-back-button-program.jpeg)
+
 ##### Clear the Mapping:
 
 Press and hold the **set button + the back button** you want to clear. The controller will vibrate, and the **Channel four** LEDs will flash simultaneously, indicating that you are in clear mode.
 
 Without entering any key combinations, press the **T button** to reset the back button to its default state.
 
+![Clear the mapping](docs/manual/images/18-014-clear-the-mapping.jpeg)
+
 #### M Button Function
 
 After powering on the controller, press and hold the **M button** for 3 seconds. The controller will vibrate, indicating that the **Back Button Function（M1/M2/M3/M4）** have been quickly disabled to prevent accidental activation.
 
 Press and hold the **M button** for 3 seconds to enable the **Back Button Function（M1/M2/M3/M4）**again.
+
+![M button function](docs/manual/images/19-015-m-button-function.jpeg)
 
 #### Reset Function
 
@@ -207,6 +251,8 @@ After the reset, all previously **configured key macros** and **turbo functions*
 #### Turbo Function
 
 \* Supported buttons for Turbo function: **ABXY, L1, R1, L2, R2,** and the **D-pad**.
+
+![Turbo function](docs/manual/images/20-016-turbo-function.jpeg)
 
 ##### Manual Rapid Fire:
 
