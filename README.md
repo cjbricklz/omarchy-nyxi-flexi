@@ -1,5 +1,7 @@
 # NYXI Flexi for Omarchy
 
+![The popup with no controller found](preview-no-controller.png)
+
 ![The plugin popup open on the Omarchy bar](preview.png)
 
 ![With a controller connected in Switch Pro mode: channel light, battery level and mode in the console](preview-connected.png)
