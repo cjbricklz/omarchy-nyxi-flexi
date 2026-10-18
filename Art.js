@@ -224,15 +224,15 @@ var FRONT = {
 var B = frame(0.835, 14, 16, 480)
 
 // The shell below the shoulders, from the middle of the bottom edge round the grip to the left shoulder.
-var backLeft = smooth([[173, 127], [125, 185], [60, 300], [28, 420], [22, 500], [45, 590], [110, 650], [180, 672],
+var backLeft = smooth([[164, 120], [125, 185], [60, 300], [28, 420], [22, 500], [45, 590], [110, 650], [180, 672],
                        [235, 640], [262, 582], [290, 528], [322, 490], [334, 478]], false)
 backLeft = reverse(join(backLeft, [["M", 334, 478], ["C", 338, 472, 344, 468, 356, 468], ["L", 480, 468]]))
 
 // The seam across the shoulders.
-var beltLeft = reverse(smooth([[164, 152], [215, 168], [290, 184], [380, 192], [480, 195]], false))
+var beltLeft = reverse(smooth([[300, 187], [380, 193], [480, 196]], false))
 
-var backGrip = [[130, 222], [290, 222], [290, 268], [214, 290], [206, 470], [226, 556], [206, 606], [170, 632],
-                [124, 612], [84, 560], [70, 500], [74, 424], [104, 320]]
+var backGrip = [[104, 300], [214, 292], [206, 470], [226, 556], [206, 606], [170, 632], [124, 612], [84, 560],
+                [70, 500], [74, 424], [84, 340]]
 
 // The speaker holes: four staggered rows.
 function speakerDots() {
@@ -257,7 +257,8 @@ function backGripPaths() {
 }
 
 // Seen from behind, the controller's right side is on the left of the picture; each button is
-// written for that side and mirrored for the other.
+// written for that side and mirrored for the other. On each shoulder the bumper (R1, L1) sits on top and
+// the trigger (R2, L2) below it.
 function button(segs, labelAt) {
   var mirrored = B.mirrored(segs)
   return {
@@ -265,8 +266,8 @@ function button(segs, labelAt) {
     right: { path: B.d(mirrored, true), lx: B.x(2 * B.axis - labelAt[0]), ly: B.y(labelAt[1]) }
   }
 }
-var r2 = button(smooth([[166, 108], [182, 72], [240, 52], [296, 62], [306, 102], [288, 132], [236, 144], [184, 140]], true), [236, 98])
-var r1 = button(poly([[314, 68], [396, 80], [406, 90], [402, 98], [316, 108]], 8, true), [358, 88])
+var r1 = button(poly([[172, 50], [388, 58], [398, 80], [390, 106], [188, 110], [168, 92]], 12, true), [284, 82])
+var r2 = button(poly([[172, 130], [282, 132], [274, 190], [240, 250], [214, 262], [186, 238], [172, 200]], [14, 14, 14, 20, 20, 20, 14], true), [226, 196])
 var m2 = button(poly([[250, 348], [268, 306], [338, 296], [341, 352], [262, 373]], 16, true), [298, 334])
 var m4 = button(poly([[237, 392], [336, 378], [338, 432], [316, 468], [236, 470]], 16, true), [290, 426])
 
@@ -276,7 +277,7 @@ var BACK = {
   m2: m2.left, m1: m2.right, m4: m4.left, m3: m4.right,
   body: B.d(B.symmetric(backLeft), false),
   belt: B.d(B.symmetric(beltLeft), false),
-  usb: B.d(poly([[420, 80], [540, 80], [540, 104], [420, 104]], 10, true), true),
+  usb: B.d(poly([[422, 64], [538, 64], [538, 104], [422, 104]], 18, true), true),
   label: B.d(poly([[375, 222], [585, 222], [585, 335], [375, 335]], 14, true), true),
   speaker: speakerDots(),
   screws: B.circle(390, 432, 8) + B.circle(570, 432, 8)
