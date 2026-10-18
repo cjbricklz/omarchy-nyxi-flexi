@@ -127,11 +127,6 @@ Panel {
     return decodeURIComponent(String(Qt.resolvedUrl(name)).replace(/^file:\/\//, ""))
   }
 
-  // ---------- Manual ----------
-  readonly property string manualUrl: String(setting("manualUrl", Model.MANUAL_URL))
-
-  function openManualOnline() { Quickshell.execDetached(["xdg-open", manualUrl]) }
-
   function stateJson() {
     return JSON.stringify({ connected: connected, mode: mode, name: dev ? dev.name : "",
                             keys: keys, axes: axes, battery: battery })
