@@ -1,5 +1,5 @@
-// The Flexi seen from behind: the triggers (R2, L2) on the shoulders, the bumpers (R1, L1) between them, and
-// the four back paddles. The paddles send no signal of their own; the controller presses another button for
+// The Flexi seen from behind: the triggers (R2, L2) on the shoulders, the bumpers (R1, L1) beside the USB bay,
+// and the four back paddles. The paddles send no signal of their own; the controller presses another button for
 // them, so each lights with the button it repeats (see the panel).
 // Drawn from the shapes in Art.js, in drawing coordinates scaled to the width given.
 import QtQuick
@@ -13,6 +13,7 @@ Item {
   property var ui: null
   readonly property real s: width / Art.WIDTH
   readonly property color fg: ui.bar.foreground
+  function tint(alpha) { return Qt.rgba(fg.r, fg.g, fg.b, alpha) }
 
   implicitHeight: Art.HEIGHT * s
   height: implicitHeight
@@ -23,18 +24,23 @@ Item {
     scale: art.s
     transformOrigin: Item.TopLeft
 
-    Line { path: Art.bodyPath(); stroke: Qt.rgba(art.fg.r, art.fg.g, art.fg.b, 0.5) }
-    Line { path: Art.BACK.cover; stroke: Qt.rgba(art.fg.r, art.fg.g, art.fg.b, 0.3) }
+    Line { path: Art.BACK.body; stroke: art.tint(0.55) }
+    Line { path: Art.BACK.belt; stroke: art.tint(0.35) }
+    Line { path: Art.backGripPaths(); stroke: art.tint(0.22); strokeWidth: 1.6 }
+    Line { path: Art.BACK.usb; stroke: art.tint(0.35) }
+    Line { path: Art.BACK.label; stroke: art.tint(0.35) }
+    Line { path: Art.BACK.speaker; stroke: "transparent"; fill: art.tint(0.4) }
+    Line { path: Art.BACK.screws; stroke: art.tint(0.35) }
 
     // Seen from behind, the controller's left side is on the right of the picture.
-    // The big caps are the triggers (they fill as they are pulled); the thin strips between them are the bumpers.
+    // The big caps are the triggers (they fill as they are pulled); the wedges beside the USB bay are the bumpers.
     Plate { ui: art.ui; label: "R2"; path: Art.BACK.r2.path; labelX: Art.BACK.r2.lx; labelY: Art.BACK.r2.ly
             value: art.ui.trigger("rt", Model.BTN.rtDigital) }
     Plate { ui: art.ui; label: "L2"; path: Art.BACK.l2.path; labelX: Art.BACK.l2.lx; labelY: Art.BACK.l2.ly
             value: art.ui.trigger("lt", Model.BTN.ltDigital) }
-    Plate { ui: art.ui; label: "R1"; labelSize: 18; path: Art.BACK.r1.path; labelX: Art.BACK.r1.lx; labelY: Art.BACK.r1.ly
+    Plate { ui: art.ui; label: "R1"; labelSize: 16; path: Art.BACK.r1.path; labelX: Art.BACK.r1.lx; labelY: Art.BACK.r1.ly
             value: art.ui.down(Model.BTN.rb) ? 1 : 0 }
-    Plate { ui: art.ui; label: "L1"; labelSize: 18; path: Art.BACK.l1.path; labelX: Art.BACK.l1.lx; labelY: Art.BACK.l1.ly
+    Plate { ui: art.ui; label: "L1"; labelSize: 16; path: Art.BACK.l1.path; labelX: Art.BACK.l1.lx; labelY: Art.BACK.l1.ly
             value: art.ui.down(Model.BTN.lb) ? 1 : 0 }
 
     Repeater {

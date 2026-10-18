@@ -1,27 +1,48 @@
 const A = require('../Art.js'), a = require('assert')
 
 // Every path is made of absolute commands and finite numbers only.
-function check(d, name) {
-  a.ok(/^[MLCAZ0-9eE.,\s-]+$/.test(d), name + ' has only absolute M, L, C, A, Z commands')
+function check(d, name, closed) {
+  a.ok(/^[MLCZ0-9eE.,\s-]+$/.test(d), name + ' has only absolute M, L, C, Z commands')
   a.ok(!/NaN|Infinity|undefined/.test(d), name + ' has no bad numbers')
-  a.ok(d.trim().endsWith('Z'), name + ' is closed')
+  if (closed) a.ok(d.trim().endsWith('Z'), name + ' is closed')
 }
-check(A.bodyPath(), 'body')
-check(A.gripHexPaths(), 'grip hexagons')
-Object.keys(A.BACK).forEach(function (k) { check(A.BACK[k].path || A.BACK[k], k) })
 
-// The back buttons come in mirrored pairs and the paths are mirror images of each other.
-a.strictEqual(A.mirror(A.mirror(A.BACK.r2.path)), A.BACK.r2.path)
-a.strictEqual(A.mirror(A.BACK.m2.path), A.BACK.m1.path)
-a.strictEqual(A.BACK.l1.lx, A.WIDTH - A.BACK.r1.lx)
+// The drawn parts, grouped by whether they are closed shapes or lines.
+const lines = [A.FRONT.body, A.BACK.body, A.BACK.belt]
+const shapes = [A.FRONT.plate, A.FRONT.dpadRing, A.FRONT.dpadPlus, A.FRONT.dot, A.FRONT.stickL.ring, A.FRONT.stickR.ring,
+  A.BACK.usb, A.BACK.label, A.BACK.speaker, A.BACK.screws, A.gripHexPaths(), A.backGripPaths()]
+Object.keys(A.FRONT.dpadArm).forEach(function (k) { shapes.push(A.FRONT.dpadArm[k], A.FRONT.dpadTri[k]) })
+;['r2', 'l2', 'r1', 'l1', 'm1', 'm2', 'm3', 'm4'].forEach(function (k) { shapes.push(A.BACK[k].path) })
+lines.forEach(function (d, i) { check(d, 'line ' + i, false) })
+shapes.forEach(function (d, i) { check(d, 'shape ' + i, true) })
 
-// The silhouette is left-right symmetric: its mirror is the same curve walked the other way round.
-const pts = A.bodyPath().match(/-?\d+(\.\d+)?/g).map(Number)
-const xs = pts.filter(function (_, i) { return i % 2 === 0 }), ys = pts.filter(function (_, i) { return i % 2 === 1 })
-a.ok(Math.min.apply(null, xs) > 0 && Math.max.apply(null, xs) < A.WIDTH, 'body fits the width')
-a.ok(Math.min.apply(null, ys) > 0 && Math.max.apply(null, ys) < A.HEIGHT, 'body fits the height')
+// Each outline is a single stroke: one M, so there are no joins to show up as notches or doubled dots.
+lines.forEach(function (d) { a.strictEqual((d.match(/M/g) || []).length, 1) })
 
-// Grip hexagons: 6 corners each, identical on both grips.
+// Everything lands inside the 780 x 550 space.
+function within(d, name) {
+  const n = d.replace(/[MLCZ]/g, ' ').trim().split(/\s+/).map(Number)
+  n.forEach(function (v, i) {
+    const max = i % 2 === 0 ? A.WIDTH : A.HEIGHT
+    a.ok(v >= 0 && v <= max, name + ': ' + v + ' is outside the drawing')
+  })
+}
+lines.concat(shapes).forEach(function (d, i) { within(d, 'path ' + i) })
+
+// The back buttons come in mirrored pairs.
+;[['r2', 'l2'], ['r1', 'l1'], ['m2', 'm1'], ['m4', 'm3']].forEach(function (p) {
+  a.ok(Math.abs(A.BACK[p[0]].lx + A.BACK[p[1]].lx - A.WIDTH) < 20, p.join('/') + ' labels mirror')
+  a.strictEqual(A.BACK[p[0]].ly, A.BACK[p[1]].ly)
+})
+
+// fillets and smooth curves stay in the right place
+const rounded = A.poly([[0, 0], [10, 0], [10, 10], [0, 10]], 2, true)
+a.strictEqual(rounded.length, 8)
+const curve = A.smooth([[0, 0], [10, 5], [20, 0]], false)
+a.deepStrictEqual(curve[0], ['M', 0, 0])
+a.deepStrictEqual(A.reverse(curve).pop().slice(-2), [0, 0])
+
+// Grip hexagons: whole hexagons only, none alone, identical on both grips.
 const hexes = A.gripHexPaths().split('Z').filter(Boolean)
 a.strictEqual(hexes.length % 2, 0)
 hexes.forEach(function (h) { a.strictEqual((h.match(/[ML]/g) || []).length, 6) })
