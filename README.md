@@ -63,7 +63,7 @@ MIT. See [LICENSE](LICENSE). That covers the plugin code. The user manual at the
 <!-- manual:start -->
 ## NYXI Flexi user manual
 
-NYXI's complete user manual, copied from [https://nyxigame.com/pages/np05_manual](https://nyxigame.com/pages/np05_manual) so it is here offline, with its images in `docs/manual/images/`. It is NYXI's content, not part of this plugin; refresh it with `python3 tools/manual-to-readme.py`.
+NYXI's complete user manual, copied from [https://nyxigame.com/pages/np05_manual](https://nyxigame.com/pages/np05_manual) so it is here offline, with its images in `docs/manual/images/`. It is NYXI's content, not part of this plugin; refresh it with `python3 tools/manual-to-readme.py`, then `tools/dark-images.sh` to put the images back in dark mode.
 
 #### Note：
 
