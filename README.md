@@ -1,6 +1,6 @@
 # NYXI Flexi for Omarchy
 
-![The NYXI Flexi popup with no controller connected](preview.png)
+![The NYXI Flexi popup with a controller connected in XInput mode](preview.png)
 
 An Omarchy bar widget for the NYXI Flexi controller. Click the gamepad icon to open a popup with:
 
